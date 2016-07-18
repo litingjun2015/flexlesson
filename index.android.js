@@ -12,7 +12,8 @@ import {
   View
 } from 'react-native';
 
-import SimpleNavigationApp from './SimpleNavigationApp.1.js'
+import MerchantInfoText from './MerchantInfoText.js'
+//import IScrolledDownAndWhatHappenedNextShockedMe from './ScrollView.js'
 //import Navigation from './NavigationApp.js'
 
 class flexlesson extends Component {
@@ -52,4 +53,5 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('flexlesson', () => SimpleNavigationApp);
+AppRegistry.registerComponent('flexlesson', () => MerchantInfoText);
+//AppRegistry.registerComponent('flexlesson', () => IScrolledDownAndWhatHappenedNextShockedMe);
