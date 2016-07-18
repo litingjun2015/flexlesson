@@ -75,6 +75,7 @@ class First extends Component{
         </View>
         <View style={styles.subheader}>
           <Text>文字资料</Text>
+          <Text style={styles.buttonText}>›</Text>
         </View>
         
         

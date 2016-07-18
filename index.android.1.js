@@ -15,7 +15,7 @@ import {
 import MerchantInfoText from './MerchantInfoText.js'
 //import IScrolledDownAndWhatHappenedNextShockedMe from './ScrollView.js'
 //import Navigation from './NavigationApp.js'
-//import swiper from './Swiper.js'
+import swiper from './Swiper.js'
 
 class flexlesson extends Component {
   render() {
@@ -54,6 +54,6 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('flexlesson', () => MerchantInfoText);
+//AppRegistry.registerComponent('flexlesson', () => MerchantInfoText);
 //AppRegistry.registerComponent('flexlesson', () => IScrolledDownAndWhatHappenedNextShockedMe);
-//AppRegistry.registerComponent('flexlesson', () => swiper);
+AppRegistry.registerComponent('flexlesson', () => swiper);
