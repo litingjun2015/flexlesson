@@ -68,9 +68,12 @@ class First extends Component{
     super(props);
     var _scrollView = ScrollView;
     this.state = { text: 'Useless Placeholder', value: 1 };
+
+    console.log(this.state);
     
     
   }
+
   
   navSecond(){
     this.props.navigator.push({
@@ -164,7 +167,7 @@ class First extends Component{
             <View style={styles.sectioncontent}>
               <RadioForm
                 radio_props={radio_props}
-                initial={1}
+                initial={0}
                 onPress={(value) => {this.setState({value:value})}}
               />
             </View>
