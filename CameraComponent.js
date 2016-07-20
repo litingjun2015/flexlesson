@@ -20,7 +20,7 @@ export default class CameraComponent extends Component {
           }}
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}>
-          <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
+          <Text style={styles.capture} onPress={this.takePicture.bind(this)}>请拍摄</Text>
         </Camera>
       </View>
     );
@@ -30,6 +30,8 @@ export default class CameraComponent extends Component {
     this.camera.capture()
       .then((data) => console.log(data))
       .catch(err => console.error(err));
+
+    this.props.navigator.pop();
   }
 }
 
@@ -49,7 +51,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 5,
     color: '#000',
-    padding: 10,
+    padding: 3,
     margin: 40
   }
 });

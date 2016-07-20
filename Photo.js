@@ -45,10 +45,7 @@ export default class Photo extends Component{
                     <Image style= {styles.photo}
                         source={require('./img/camera.png')}
                         />
-                </TouchableHighlight>
-
-
-                
+                </TouchableHighlight>                
             </View>
 
             
@@ -60,11 +57,7 @@ export default class Photo extends Component{
     );
   }
 
-  takePicture() {
-    this.camera.capture()
-      .then((data) => console.log(data))
-      .catch(err => console.error(err));
-  }
+  
 
 }
 
@@ -96,20 +89,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: height/20,
     color:'#EEEEEE'
-  },
-  preview: {
+  },  
+  footer: {
     flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    height: Dimensions.get('window').height,
-    width: Dimensions.get('window').width
+    justifyContent: 'center',
+    width: width/3,
+    height: height/25,
   },
-  capture: {
-    flex: 0,
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    color: '#000',
-    padding: 10,
-    margin: 40
-  }
 });

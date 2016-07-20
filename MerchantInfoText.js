@@ -56,7 +56,7 @@ export default class MerchantInfoText extends Component {
       case 'second':        
         return (<Second navigator={navigator} title="second" />);
       case 'camera':
-        return (<CameraComponent />);
+        return (<CameraComponent navigator={navigator} />);
     }
   }
 }
