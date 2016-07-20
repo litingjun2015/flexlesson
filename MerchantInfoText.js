@@ -13,6 +13,7 @@ import { Navigator, Text, TouchableHighlight, View,
 
 import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';  
 import Second from './MerchantInfoPic.js'
+import CameraComponent from './CameraComponent.js';
 
 var _navigator;
 BackAndroid.addEventListener('hardwareBackPress', () => {
@@ -52,8 +53,10 @@ export default class MerchantInfoText extends Component {
     switch (route.id) {
       case 'first':
         return (<First navigator={navigator} title="first"/>);
-      case 'second':
+      case 'second':        
         return (<Second navigator={navigator} title="second" />);
+      case 'camera':
+        return (<CameraComponent />);
     }
   }
 }
@@ -73,6 +76,7 @@ class First extends Component{
     
   };
 
+    console.log(this.props);
     console.log(this.state);
     
     

@@ -11,9 +11,17 @@ import { Navigator, Text, TouchableHighlight, View,
   TextInput,
   Picker } from 'react-native';
 
-import Photo from './Photo.js'
+import Photo from './Photo.js';
+import CameraComponent from './CameraComponent.js';
 
 export default class Second extends Component{
+
+  constructor(props) {
+    super(props);   
+    console.log(props); 
+    console.log(props.navigator); 
+  }
+  
   render() {
     return (
         <View style={styles.container}>
@@ -39,13 +47,12 @@ export default class Second extends Component{
 
           <View>
             <View style={styles.section}>
-                <Photo title={'门面照'}/>
-                <Photo title={'收银台'}/>
-                <Photo title={'经营环境'}/>
+                <Photo title={'门面照'} navigator={this.props.navigator}/>
+                <Photo title={'收银台'} navigator={this.props.navigator}/>
+                <Photo title={'经营环境'} navigator={this.props.navigator}/>
             </View>
           </View>
 
-          
 
 
           <View style={styles.sectiontitle}>
@@ -54,7 +61,7 @@ export default class Second extends Component{
 
           <View>
             <View style={styles.section}>
-                <Photo/>
+                <Photo navigator={this.props.navigator}/>
             </View>
           </View>
 
@@ -64,8 +71,8 @@ export default class Second extends Component{
 
           <View>
             <View style={styles.section}>
-                <Photo/>
-                <Photo/>
+                <Photo navigator={this.props.navigator}/>
+                <Photo navigator={this.props.navigator}/>
             </View>
           </View>
 
