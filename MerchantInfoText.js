@@ -8,7 +8,8 @@ import { Navigator, Text, TouchableHighlight, View,
   Dimensions,
   ScrollView,
   Image,
-  TextInput } from 'react-native';
+  TextInput,
+  Picker } from 'react-native';
 
 import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';  
 
@@ -77,6 +78,8 @@ class First extends Component{
   }
 
   
+
+  
   navSecond(){
     this.props.navigator.push({
       id: 'second'
@@ -95,6 +98,13 @@ class First extends Component{
 
   render() {
 
+    var zhanghu;
+
+    if(this.state.accountType[this.state.accountTypeIndex].label=='对公账户'){
+      // zhanghu = <View style={styles.header}>
+      //     <Text style={{color: 'white'}}>资料</Text>
+      //   </View>;
+    }
     
 
     return (
@@ -214,21 +224,6 @@ class First extends Component{
 
           </View>
 
-        <View style={styles.component}>
-          
-        </View>
-        <Text>selected: {this.state.accountType[this.state.accountTypeIndex].label}</Text>
-
-
-          
-
-
-          
-
-
-          
-          
-
           <View style={styles.section}>
             <View style={styles.sectionlabel}> 
               <Text>开户名称</Text>
@@ -244,6 +239,36 @@ class First extends Component{
             </View>
           </View>
 
+          <View style={styles.section}>
+            <View style={styles.sectionlabel}> 
+              <Text>开户银行</Text>
+            </View>
+            <View style={styles.sectioncontent}>
+              <Picker
+                selectedValue={this.state.bankName}
+                //onValueChange={(bank) => this.setState({bankName: bank})}
+                >
+                <Picker.Item label="中国民生银行" value="中国民生银行" />
+              </Picker>
+            </View>
+          </View>
+
+          <View style={styles.section}>
+            <View style={styles.sectionlabel}> 
+              <Text>银行账号</Text>
+            </View>
+            <View style={styles.sectioncontent}>
+              <TextInput
+                placeholder='请输入开户银行账号'  
+                autoFocus={true}  
+                textAlign='center'
+                style={{height: 40, borderBottomColor: 'red', borderWidth: 1}}
+                onChangeText={(bankAccountName) => this.setState({bankAccountName})}                
+              />
+            </View>
+          </View>
+
+          
 
           <View style={styles.sectiontitle}>
             <Text>联系人信息</Text>
