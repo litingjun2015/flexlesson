@@ -56,18 +56,20 @@ export default class MerchantInfoText extends Component {
   }
 }
 
-var radio_props = [
-      {label: 'param1', value: 0 },
-      {label: 'param2', value: 1 }
-    ];
-    
+   
 class First extends Component{
   
 
   constructor(props) {
     super(props);
     var _scrollView = ScrollView;
-    this.state = { text: 'Useless Placeholder', value: 1 };
+    this.state = { text: 'Useless Placeholder', value: 1,
+  
+      accountType: [{label: '对公账户', value: 0}, {label: '个人账户', value: 1},],
+      accountTypeValue: 0,
+      accountTypeIndex: 0, 
+    
+  };
 
     console.log(this.state);
     
@@ -80,6 +82,16 @@ class First extends Component{
       id: 'second'
     })
   }
+
+  press(){
+    if(this.state.value==0)
+      this.setState({value:1})
+    else
+      this.setState({value:0})
+    console.log(this.state);
+  }
+
+  
 
   render() {
 
@@ -165,15 +177,56 @@ class First extends Component{
             </View>
 
             <View style={styles.sectioncontent}>
-              <RadioForm
-                radio_props={radio_props}
-                initial={0}
-                onPress={(value) => {this.setState({value:value})}}
-              />
-            </View>
+              <RadioForm formHorizontal={true} animation={true} >
+                {this.state.accountType.map((obj, i) => {
+                  var onPress = (value, index) => {
+                      this.setState({
+                        accountTypeValue: value,
+                        accountTypeIndex: index
+                      })
+                    }
+                  return (
+                    <RadioButton labelHorizontal={true} key={i} >
+                      {/*  You can set RadioButtonLabel before RadioButtonInput */}
+                      <RadioButtonInput
+                        obj={obj}
+                        index={i}
+                        isSelected={this.state.accountTypeIndex === i}
+                        onPress={onPress}
+                        buttonInnerColor={'#525252'}
+                        buttonOuterColor={'#B3B3B3'}
+                        buttonSize={8}
+                        buttonStyle={{}}
+                        buttonWrapStyle={{marginLeft: 10}}
+                      />
+                      <RadioButtonLabel
+                        obj={obj}
+                        index={i}
+                        labelHorizontal={true}
+                        onPress={onPress}
+                        labelWrapStyle={{}}
+                      />
+                    </RadioButton>
+                  )
+                })}
+              </RadioForm>
+            </View>           
 
           </View>
 
+        <View style={styles.component}>
+          
+        </View>
+        <Text>selected: {this.state.accountType[this.state.accountTypeIndex].label}</Text>
+
+
+          
+
+
+          
+
+
+          
           
 
           <View style={styles.section}>
@@ -247,6 +300,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  component: {
+    marginBottom: 15,
   },
   header: {
     flex: 1,
