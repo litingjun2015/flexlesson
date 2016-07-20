@@ -274,15 +274,56 @@ class First extends Component{
             <Text>联系人信息</Text>
           </View>
 
+          <View style={styles.section}>
+            <View style={styles.sectionlabel}> 
+              <Text>联系人姓名</Text>
+            </View>
+            <View style={styles.sectioncontent}>
+              <TextInput
+                placeholder='请输入联系人姓名'  
+                autoFocus={true}  
+                textAlign='center'
+                style={{height: 40, borderBottomColor: 'red', borderWidth: 1}}
+                onChangeText={(companyLegalPerson) => this.setState({companyLegalPerson})}                
+              />
+            </View>
+          </View>
+
+          <View style={styles.section}>
+            <View style={styles.sectionlabel}> 
+              <Text>手机号码</Text>
+            </View>
+            <View style={styles.sectioncontent}>
+              <TextInput
+                placeholder='请输入联系人手机号码'  
+                autoFocus={true}  
+                textAlign='center'
+                style={{height: 40, borderBottomColor: 'red', borderWidth: 1}}
+                onChangeText={(merchantMobilePhone) => this.setState({merchantMobilePhone})}                
+              />
+            </View>
+          </View>
+
+          <View style={styles.section}>
+            <View style={styles.sectionlabel}> 
+              <Text>常用邮箱</Text>
+            </View>
+            <View style={styles.sectioncontent}>
+              <TextInput
+                placeholder='请输入常用邮箱'  
+                autoFocus={true}  
+                textAlign='center'
+                style={{height: 40, borderBottomColor: 'red', borderWidth: 1}}
+                onChangeText={(companyEmail) => this.setState({companyEmail})}                
+              />
+            </View>
+          </View>
+
               
           </View>
           <View></View>
 
-<TextInput
-                style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-                onChangeText={(text) => this.setState({text})}
-                value={this.state.text}
-              />
+
 
         </ScrollView>
 
