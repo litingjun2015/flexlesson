@@ -12,6 +12,7 @@ import { Navigator, Text, TouchableHighlight, View,
   Picker } from 'react-native';
 
 import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';  
+import Second from './MerchantInfoPic.js'
 
 var _navigator;
 BackAndroid.addEventListener('hardwareBackPress', () => {
@@ -347,17 +348,7 @@ class First extends Component{
 }
 
 
-class Second extends Component{
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>
-          Second screen
-        </Text>
-      </View>
-    );
-  }
-};
+
 
 var {height, width} = Dimensions.get('window');
 
