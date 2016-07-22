@@ -11,6 +11,7 @@ import {
 import Camera from 'react-native-camera';
 
 export default class CameraComponent extends Component {
+  
   render() {
     return (
       <View style={styles.container}>
@@ -27,11 +28,24 @@ export default class CameraComponent extends Component {
   }
 
   takePicture() {
-    this.camera.capture()
-      .then((data) => console.log(data))
-      .catch(err => console.error(err));
+    const self=this;
 
-    this.props.navigator.pop();
+    this.camera.capture()
+      .then(
+        (data) => {
+          console.log(data);
+          console.log(data.path);
+
+          console.log(self.props);
+          if(self.props.getLocalsource)
+          {
+            console.log(self.props.getLocalsource);
+            self.props.getLocalsource(data.path);
+          }
+          self.props.navigator.pop();
+        }
+      )
+      .catch(err => console.error(err));    
   }
 }
 

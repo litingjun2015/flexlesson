@@ -17,20 +17,68 @@ var _navigator;
 export default class Photo extends Component{
   constructor(props) {
     super(props);    
+    this.state = {
+      localsource:'',
+    }
+
     console.log(this.props);
     console.log(props.navigator); 
 
     _navigator = props.navigator;
   }
 
+
   navCamera(){
+    const self=this;
+
     console.log(this.props);
     this.props.navigator.push({
-      id: 'camera'
+      id: this.props.type,
+      params: {
+        getLocalsource: function (localsource) {
+          self.setState({
+            localsource: localsource
+          })
+        }
+      }
     })
   }
 
   render() {
+
+    var frame;
+
+    if(this.state.localsource==''){
+      console.log(this.state.localsource);
+      frame = <View style={styles.frame} >
+                <Text style={styles.frameheader}>请拍摄{this.props.title}</Text>
+
+                <TouchableHighlight onPress={this.navCamera.bind(this)}>
+                    <Image style= {styles.cameraphoto}
+                        source={require('./img/camera.png')}
+                        />
+                </TouchableHighlight>                
+            </View>;
+    }
+    else
+    {
+      console.log(this.props);
+      console.log(this.state.localsource);
+      console.log('./img/favicon.png');
+      
+      frame = <View style={styles.frame} >                
+
+                <TouchableHighlight onPress={this.navCamera.bind(this)}>
+                    <Image 
+                        style= {styles.photo}
+                        source={{uri: this.state.localsource}}
+                        //source={require('./img/favicon.png')}
+                        //source={require('content://media/external/images/media/279919')}
+                        />
+                </TouchableHighlight>                
+            </View>;
+    }
+
     return (
         <View style={styles.container}>
 
@@ -38,16 +86,7 @@ export default class Photo extends Component{
             <Text>{this.props.title}</Text>
             </View>
 
-            <View style={styles.frame} >
-                <Text style={styles.frameheader}>请拍摄{this.props.title}</Text>
-
-                <TouchableHighlight onPress={this.navCamera.bind(this)}>
-                    <Image style= {styles.photo}
-                        source={require('./img/camera.png')}
-                        />
-                </TouchableHighlight>                
-            </View>
-
+            {frame}
             
 
             <View style={styles.footer}>
@@ -69,6 +108,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',    
   },
   photo: {
+    width: width/3-10,
+    height: width/3-10 
+  },
+  cameraphoto: {
     height:80/1.5, 
     width: 104/1.5    
   },

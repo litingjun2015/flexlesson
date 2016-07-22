@@ -50,13 +50,16 @@ export default class MerchantInfoText extends Component {
 
   navigatorRenderScene(route, navigator) {
     _navigator = navigator;
+    //console.log(route);
     switch (route.id) {
       case 'first':
         return (<First navigator={navigator} title="first"/>);
       case 'second':        
         return (<Second navigator={navigator} title="second" />);
+      case 'memmian':
+        return (<CameraComponent {...route.params} navigator={navigator} />);
       case 'camera':
-        return (<CameraComponent navigator={navigator} />);
+        return (<CameraComponent navigator={navigator} />);  
     }
   }
 }
