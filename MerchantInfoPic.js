@@ -21,6 +21,18 @@ export default class Second extends Component{
     //this.props.menmianPhotoSrc = './img/camera.png';
     console.log(props); 
     console.log(props.navigator); 
+
+    this.state = { 
+      info: this.props.info
+    }
+  }
+
+  componentDidMount()
+  {
+    var varible = this.refs.memmian;
+    this.setState({menmianPhotoSrc:varible.state.localsource})
+    console.log(varible);
+    console.log(this.state);
   }
   
   render() {
@@ -48,7 +60,7 @@ export default class Second extends Component{
 
           <View>
             <View style={styles.section}>
-                <Photo title={'门面照'} navigator={this.props.navigator} type={'memmian'}/>
+                <Photo title={'门面照'} navigator={this.props.navigator} type={'memmian'} ref="memmian"/>
                 <Photo title={'收银台'} navigator={this.props.navigator}/>
                 <Photo title={'经营环境'} navigator={this.props.navigator}/>
             </View>

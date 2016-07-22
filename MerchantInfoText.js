@@ -55,7 +55,7 @@ export default class MerchantInfoText extends Component {
       case 'first':
         return (<First navigator={navigator} title="first"/>);
       case 'second':        
-        return (<Second navigator={navigator} title="second" />);
+        return (<Second {...route.params} navigator={navigator} title="second" />);
       case 'memmian':
         return (<CameraComponent {...route.params} navigator={navigator} />);
       case 'camera':
@@ -71,11 +71,17 @@ class First extends Component{
   constructor(props) {
     super(props);
     var _scrollView = ScrollView;
+
+    
     this.state = { text: 'Useless Placeholder', value: 1,
   
       accountType: [{label: '对公账户', value: 0}, {label: '个人账户', value: 1},],
       accountTypeValue: 0,
-      accountTypeIndex: 0, 
+      accountTypeIndex: 0,      
+
+      info: {
+        merchantFullName: 'test'
+      } 
     
   };
 
@@ -90,7 +96,12 @@ class First extends Component{
   
   navSecond(){
     this.props.navigator.push({
-      id: 'second'
+      id: 'second',
+      params: {
+        info:{
+          merchantFullName: this.state.merchantFullName
+        }
+      }      
     })
   }
 
@@ -147,7 +158,8 @@ class First extends Component{
                 autoFocus={true}  
                 textAlign='center'
                 style={{height: 40, borderBottomColor: 'red', borderWidth: 1}}
-                onChangeText={(merchantFullName) => this.setState({merchantFullName})}                
+                onChangeText={(merchantFullName) => this.setState({merchantFullName}) }      
+                value={this.state.merchantFullName}          
               />
             </View>
           </View>

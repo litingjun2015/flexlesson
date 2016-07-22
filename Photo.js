@@ -18,7 +18,6 @@ export default class Photo extends Component{
   constructor(props) {
     super(props);    
     this.state = {
-      localsource:'',
     }
 
     console.log(this.props);
@@ -48,7 +47,7 @@ export default class Photo extends Component{
 
     var frame;
 
-    if(this.state.localsource==''){
+    if(this.state.localsource==undefined){
       console.log(this.state.localsource);
       frame = <View style={styles.frame} >
                 <Text style={styles.frameheader}>请拍摄{this.props.title}</Text>
@@ -64,7 +63,6 @@ export default class Photo extends Component{
     {
       console.log(this.props);
       console.log(this.state.localsource);
-      console.log('./img/favicon.png');
       
       frame = <View style={styles.frame} >                
 
