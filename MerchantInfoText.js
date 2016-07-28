@@ -11,7 +11,7 @@ import { Navigator, Text, TouchableHighlight, View,
   TextInput,
   Picker } from 'react-native';
 
-import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';  
+import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import Second from './MerchantInfoPic.js'
 import CameraComponent from './CameraComponent.js';
 
@@ -37,7 +37,7 @@ BackAndroid.addEventListener('hardwareBackPress', () => {
 // });
 
 export default class MerchantInfoText extends Component {
-  
+
 
   render() {
     return (
@@ -54,46 +54,48 @@ export default class MerchantInfoText extends Component {
     switch (route.id) {
       case 'first':
         return (<First navigator={navigator} title="first"/>);
-      case 'second':        
+      case 'second':
         return (<Second {...route.params} navigator={navigator} title="second" />);
       case 'memmian':
         return (<CameraComponent {...route.params} navigator={navigator} />);
       case 'camera':
-        return (<CameraComponent navigator={navigator} />);  
+        return (<CameraComponent navigator={navigator} />);
     }
   }
 }
 
-   
+
 class First extends Component{
-  
+
 
   constructor(props) {
     super(props);
     var _scrollView = ScrollView;
 
-    
+
     this.state = { text: 'Useless Placeholder', value: 1,
-  
+
       accountType: [{label: '对公账户', value: 0}, {label: '个人账户', value: 1},],
       accountTypeValue: 0,
-      accountTypeIndex: 0,      
+      accountTypeIndex: 0,
 
       info: {
         merchantFullName: 'test'
-      } 
-    
+      },
+
+      bankName: "中国民生银行",
+
   };
 
     console.log(this.props);
     console.log(this.state);
-    
-    
+
+
   }
 
-  
 
-  
+
+
   navSecond(){
     this.props.navigator.push({
       id: 'second',
@@ -101,7 +103,7 @@ class First extends Component{
         info:{
           merchantFullName: this.state.merchantFullName
         }
-      }      
+      }
     })
   }
 
@@ -113,7 +115,7 @@ class First extends Component{
     console.log(this.state);
   }
 
-  
+
 
   render() {
 
@@ -124,7 +126,7 @@ class First extends Component{
       //     <Text style={{color: 'white'}}>资料</Text>
       //   </View>;
     }
-    
+
 
     return (
       <View style={styles.container}>
@@ -136,9 +138,9 @@ class First extends Component{
           <Text style={{color: 'white'}}>文字资料</Text>
           <Text style={styles.buttonText}>›</Text>
         </View>
-        
-        
-        
+
+
+
         <View style={styles.content}>
 
         <ScrollView>
@@ -149,52 +151,52 @@ class First extends Component{
           </View>
 
           <View style={styles.section}>
-            <View style={styles.sectionlabel}> 
+            <View style={styles.sectionlabel}>
               <Text>商户名称</Text>
             </View>
             <View style={styles.sectioncontent}>
               <TextInput
-                placeholder='请输入商户名称'  
-                autoFocus={true}  
+                placeholder='请输入商户名称'
+                autoFocus={true}
                 textAlign='center'
                 style={{height: 40, borderBottomColor: 'red', borderWidth: 1}}
-                onChangeText={(merchantFullName) => this.setState({merchantFullName}) }      
-                value={this.state.merchantFullName}          
+                onChangeText={(merchantFullName) => this.setState({merchantFullName}) }
+                value={this.state.merchantFullName}
               />
             </View>
           </View>
 
           <View style={styles.section}>
-            <View style={styles.sectionlabel}> 
+            <View style={styles.sectionlabel}>
               <Text>注册地址</Text>
             </View>
             <View style={styles.sectioncontent}>
               <TextInput
-                placeholder='请输入注册地址'  
-                autoFocus={true}  
+                placeholder='请输入注册地址'
+                autoFocus={true}
                 textAlign='center'
                 style={{height: 40, borderBottomColor: 'red', borderWidth: 1}}
-                onChangeText={(merchantRegAddress) => this.setState({merchantRegAddress})}                
+                onChangeText={(merchantRegAddress) => this.setState({merchantRegAddress})}
               />
             </View>
           </View>
 
           <View style={styles.section}>
-            <View style={styles.sectionlabel}> 
+            <View style={styles.sectionlabel}>
               <Text>客服电话</Text>
             </View>
             <View style={styles.sectioncontent}>
               <TextInput
-                placeholder='请输入客服电话'  
-                autoFocus={true}  
+                placeholder='请输入客服电话'
+                autoFocus={true}
                 textAlign='center'
                 style={{height: 40, borderBottomColor: 'red', borderWidth: 1}}
-                onChangeText={(servicePhone) => this.setState({servicePhone})}                
+                onChangeText={(servicePhone) => this.setState({servicePhone})}
               />
             </View>
           </View>
 
-          
+
 
 
           <View style={styles.sectiontitle}>
@@ -202,7 +204,7 @@ class First extends Component{
           </View>
 
           <View style={styles.section}>
-            <View style={styles.sectionlabel}> 
+            <View style={styles.sectionlabel}>
               <Text>账户类型</Text>
             </View>
 
@@ -240,106 +242,110 @@ class First extends Component{
                   )
                 })}
               </RadioForm>
-            </View>           
+            </View>
 
           </View>
 
           <View style={styles.section}>
-            <View style={styles.sectionlabel}> 
+            <View style={styles.sectionlabel}>
               <Text>开户名称</Text>
             </View>
             <View style={styles.sectioncontent}>
               <TextInput
-                placeholder='请输入开户名称'  
-                autoFocus={true}  
+                placeholder='请输入开户名称'
+                autoFocus={true}
                 textAlign='center'
                 style={{height: 40, borderBottomColor: 'red', borderWidth: 1}}
-                onChangeText={(bankAccountName) => this.setState({bankAccountName})}                
+                onChangeText={(bankAccountName) => this.setState({bankAccountName})}
               />
             </View>
           </View>
 
-          <View style={styles.section}>
-            <View style={styles.sectionlabel}> 
+          <View style={styles.section2}>
+            <View style={styles.sectionlabel2}>
               <Text>开户银行</Text>
             </View>
-            <View style={styles.sectioncontent}>
-              <Picker
-                selectedValue={this.state.bankName}
-                //onValueChange={(bank) => this.setState({bankName: bank})}
-                >
-                <Picker.Item label="中国民生银行" value="中国民生银行" />
-              </Picker>
+
+            <View style={styles.sectioncontent2}>
+            <Picker
+              selectedValue={this.state.bankName}
+              onValueChange={(bank) => this.setState({bankName: bank})}
+              >
+              <Picker.Item label="中国民生银行" value="中国民生银行" />
+            </Picker>
             </View>
+
+
+
           </View>
 
           <View style={styles.section}>
-            <View style={styles.sectionlabel}> 
+            <View style={styles.sectionlabel}>
               <Text>银行账号</Text>
             </View>
             <View style={styles.sectioncontent}>
               <TextInput
-                placeholder='请输入开户银行账号'  
-                autoFocus={true}  
+                placeholder='请输入开户银行账号'
+                autoFocus={true}
                 textAlign='center'
                 style={{height: 40, borderBottomColor: 'red', borderWidth: 1}}
-                onChangeText={(bankAccountName) => this.setState({bankAccountName})}                
+                onChangeText={(bankAccountName) => this.setState({bankAccountName})}
               />
             </View>
           </View>
 
-          
+
 
           <View style={styles.sectiontitle}>
             <Text>联系人信息</Text>
           </View>
 
           <View style={styles.section}>
-            <View style={styles.sectionlabel}> 
+            <View style={styles.sectionlabel}>
               <Text>联系人姓名</Text>
             </View>
             <View style={styles.sectioncontent}>
               <TextInput
-                placeholder='请输入联系人姓名'  
-                autoFocus={true}  
+                placeholder='请输入联系人姓名'
+                autoFocus={true}
                 textAlign='center'
                 style={{height: 40, borderBottomColor: 'red', borderWidth: 1}}
-                onChangeText={(companyLegalPerson) => this.setState({companyLegalPerson})}                
+                onChangeText={(companyLegalPerson) => this.setState({companyLegalPerson})}
               />
             </View>
           </View>
 
           <View style={styles.section}>
-            <View style={styles.sectionlabel}> 
+            <View style={styles.sectionlabel}>
               <Text>手机号码</Text>
             </View>
             <View style={styles.sectioncontent}>
               <TextInput
-                placeholder='请输入联系人手机号码'  
-                autoFocus={true}  
+                placeholder='请输入联系人手机号码'
+                autoFocus={true}
                 textAlign='center'
                 style={{height: 40, borderBottomColor: 'red', borderWidth: 1}}
-                onChangeText={(merchantMobilePhone) => this.setState({merchantMobilePhone})}                
+                onChangeText={(merchantMobilePhone) => this.setState({merchantMobilePhone})}
               />
             </View>
           </View>
 
           <View style={styles.section}>
-            <View style={styles.sectionlabel}> 
+            <View style={styles.sectionlabel}>
               <Text>常用邮箱</Text>
             </View>
             <View style={styles.sectioncontent}>
               <TextInput
-                placeholder='请输入常用邮箱'  
-                autoFocus={true}  
+                placeholder='请输入常用邮箱'
+                autoFocus={true}
                 textAlign='center'
                 style={{height: 40, borderBottomColor: 'red', borderWidth: 1}}
-                onChangeText={(companyEmail) => this.setState({companyEmail})}                
+                onChangeText={(companyEmail) => this.setState({companyEmail})}
               />
             </View>
           </View>
 
-              
+
           </View>
           <View></View>
 
@@ -353,14 +359,14 @@ class First extends Component{
         <View style={styles.footer}>
           <Text>footer</Text>
         </View>
-        
+
         <ToolbarAndroid style={styles.toolbar}
                         title={this.props.title}
                         titleColor={'#FFFFFF'}/>
         <TouchableHighlight onPress={this.navSecond.bind(this)}>
           <Text>Navigate to second screen</Text>
         </TouchableHighlight>
-        
+
       </View>
     );
   }
@@ -408,7 +414,7 @@ const styles = StyleSheet.create({
     height: 1.2*height/12,
     backgroundColor: '#F6F6F6',
     marginTop: 5,
-    borderColor: '#E9E9E9', 
+    borderColor: '#E9E9E9',
     borderWidth: 0.5
   },
   section: {
@@ -419,7 +425,18 @@ const styles = StyleSheet.create({
     flexWrap: 'nowrap',
     flexDirection: 'row',
     backgroundColor: '#F6F6F6',
-    borderColor: '#E9E9E9', 
+    borderColor: '#E9E9E9',
+    borderWidth: 0.5
+  },
+  section2: {
+    flex: 1,
+    alignItems: 'center',
+    width: width,
+    height: 150,
+    flexWrap: 'nowrap',
+    flexDirection: 'row',
+    backgroundColor: '#F6F6F6',
+    borderColor: '#E9E9E9',
     borderWidth: 0.5
   },
   sectionlabel: {
@@ -429,10 +446,23 @@ const styles = StyleSheet.create({
     height: 1.1*height/12,
     width: width/4
   },
+  sectionlabel2: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: width/4
+  },
   sectioncontent: {
     flex: 1,
     width: 2.6*width/4,
     marginRight: 200
+  },
+  sectioncontent2: {
+    width: 2.6*width/4,
+    marginRight: 200
+  },
+  picker: {
+    width: 100,
   },
   content: {
     flex: 1,

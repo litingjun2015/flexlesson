@@ -12,6 +12,11 @@ import {
   View
 } from 'react-native';
 
+import MerchantInfoText from './MerchantInfoText.js'
+//import IScrolledDownAndWhatHappenedNextShockedMe from './ScrollView.js'
+//import Navigation from './NavigationApp.js'
+//import swiper from './Swiper.js'
+
 class flexlesson extends Component {
   render() {
     return (
@@ -20,11 +25,10 @@ class flexlesson extends Component {
           Welcome to React Native!
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit index.ios.js
+          To get started, edit index.android.js
         </Text>
         <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
+          Shake or press menu button for dev menu
         </Text>
       </View>
     );
@@ -50,4 +54,6 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('flexlesson', () => flexlesson);
+AppRegistry.registerComponent('flexlesson', () => MerchantInfoText);
+//AppRegistry.registerComponent('flexlesson', () => IScrolledDownAndWhatHappenedNextShockedMe);
+//AppRegistry.registerComponent('flexlesson', () => swiper);
